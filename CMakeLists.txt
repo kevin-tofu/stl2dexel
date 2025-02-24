@@ -27,11 +27,24 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Libigl)
 
 
-add_executable(my_project src/main.cpp)
+# include_directories(${CMAKE_SOURCE_DIR}/src/dexel)
+include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/src/dexel)
+
+file(GLOB SRC_CPP src/**/*.cpp)
+# file(GLOB SRC_TPP src/**/*.tpp)
+
+# add_executable(my_project src/main.cpp ${SRC_CPP} ${SRC_TPP})
+add_executable(my_project src/main.cpp ${SRC_CPP})
+
+
+# add_executable(my_project src/main.cpp)
 target_link_libraries(my_project PRIVATE CLI11 igl::core Eigen3::Eigen)
 
-target_include_directories(my_project PRIVATE
+target_include_directories(
+    my_project PRIVATE
     ${Eigen_SOURCE_DIR}
     ${Libigl_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/src/dexel
 )
-
+# target_include_directories(my_project PRIVATE ${CMAKE_SOURCE_DIR}/src)
