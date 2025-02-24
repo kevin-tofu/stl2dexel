@@ -8,12 +8,12 @@
 #include <igl/readSTL.h>
 #include <igl/AABB.h>
 
-
+<template typename T=double>
 class Dexel {
     public:
-        std::vector<double> z_values;
+        std::vector<T> z_values;
     
-        void add(double z) {
+        void add(T z) {
             z_values.push_back(z);
         }
     
@@ -21,17 +21,17 @@ class Dexel {
             std::sort(z_values.begin(), z_values.end());
         }
     
-        std::vector<double> getZValues() const {
+        std::vector<T> getZValues() const {
             return z_values;
         }
     
         void print() const {
-            for (double z : z_values) {
+            for (T z : z_values) {
                 std::cout << z << " ";
             }
             std::cout << std::endl;
         }
-    };
+};
     
 
 void getBoundingBox(
