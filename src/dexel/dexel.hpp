@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <Eigen/Dense>
+#include <geometry.hpp>
 
 
 namespace dexel_sim {
@@ -26,7 +27,8 @@ namespace dexel_sim {
                 const Eigen::MatrixXd& V,
                 const Eigen::MatrixXi& F, 
                 int x_steps,
-                int y_steps
+                int y_steps,
+                Plane plane = Plane::XY
             );
             ~DexelMap();
         private:

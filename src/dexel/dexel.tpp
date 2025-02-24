@@ -71,7 +71,6 @@ namespace dexel_sim {
     }
 
 
-    enum class Plane { XY, XZ, YZ };
     template <typename T>
     void findIntersections_OMP(
         const Eigen::MatrixXd& V,
@@ -235,17 +234,24 @@ namespace dexel_sim {
         const Eigen::MatrixXd& V,
         const Eigen::MatrixXi& F, 
         int x_steps,
-        int y_steps
+        int y_steps,
+        Plane plane
     ){
         double x_min, x_max, y_min, y_max, z_min, z_max;
         getBoundingBox(
             V, x_min, x_max, y_min, y_max, z_min, z_max
         );
 
-        this->dexel_map = generateDexelMap_XY<T>(
+        // this->dexel_map = generateDexelMap_XY<T>(
+        //     V, F,
+        //     x_min, x_max, x_steps,
+        //     y_min, y_max, y_steps
+        // );
+        this->dexel_map = generateDexelMap<T>(
             V, F,
             x_min, x_max, x_steps,
-            y_min, y_max, y_steps
+            y_min, y_max, y_steps,
+            plane
         );
     }
 
