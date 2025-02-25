@@ -1,6 +1,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <CLI/CLI.hpp>
 #include <Eigen/Core>
@@ -20,7 +21,8 @@ int main(int argc, char** argv){
     CLI11_PARSE(app, argc, argv);
     std::cout << "stl_path: " << stl_path << std::endl;
     
-    FILE* stl_file = fopen(stl_path.c_str(), "rb");
+    // FILE* stl_file = fopen(stl_path.c_str(), "rb");
+    std::ifstream stl_file(stl_path, std::ios::binary);
     if (!stl_file) {
         std::cerr << "Failed to open STL file: " << stl_path << std::endl;
         return 1;
