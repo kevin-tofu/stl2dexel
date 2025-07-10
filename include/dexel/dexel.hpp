@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <Eigen/Dense>
-#include <geometry.hpp>
+#include <dexel/geometry.hpp>
 
 
 namespace dexel_sim {
@@ -53,6 +53,6 @@ namespace dexel_sim {
     };
 };
 
-#include "dexel.tpp"
+#include "dexel/dexel.tpp"
 
 #endif // DEXEL_HPP
